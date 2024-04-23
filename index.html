@@ -3,7 +3,7 @@
 
 <head>
     <!-- Metadata section -->
-    <title>Mole Health Assessment</title>
+    <title>Mole Health Assessment</title> <!-- Code for the title-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
@@ -11,7 +11,7 @@
         body {
             background-color: #000080; /* Navy blue background */
             color: #FFFF00; /* Yellow text color */
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif; /* Font type */
         }
 
         .w3-container,
@@ -25,7 +25,7 @@
             color: #000080 !important; /* Navy blue text color on button hover */
         }
 
-        .image-container {
+        .image-container { 
             display: flex;
             justify-content: space-around;
             align-items: flex-start;
@@ -42,9 +42,9 @@
 <body>
     <!-- Title page -->
     <div id="titlePage" class="w3-container w3-center">
-        <h1>Mole Health Assessment</h1>
-        <p>Answer a few questions to assess your mole health.</p>
-        <button class="w3-btn w3-hover-yellow" onclick="startSurvey()">Start Assessment</button>
+        <h1>Mole Health Assessment</h1> <!-- Code for the header -->
+        <p>Answer a few questions to assess your mole health.</p> <!-- Text that will show up at the start of the page-->
+        <button class="w3-btn w3-hover-yellow" onclick="startSurvey()">Start Assessment</button> <!-- Button to begin the assesment -->
     </div>
 
     <!-- Survey section -->
@@ -52,13 +52,13 @@
         <!-- Image container -->
         <div class="image-container">
             <div>
-                <h2>Reference Mole Image</h2>
+                <h2>Reference Mole Image</h2> <!-- Header text for the image of reference -->
                 <img id="referenceImage" src="https://www.txid.org/wp-content/uploads/2012/05/ABCDEs-1.jpg" alt="Reference Mole Image">
-            </div>
+            </div> <!-- Code for image used as reference with the alternate text -->
             <div>
-                <h2>Uploaded Mole Image</h2>
+                <h2>Uploaded Mole Image</h2> <!-- Code for text where the image shoudl be uploaded for comparison with the reference image -->
                 <img id="uploadedImage" src="#" alt="Uploaded Mole Image">
-                <input type="file" id="fileInput" accept="image/*">
+                <input type="file" id="fileInput" accept="image/*"> <!-- Code where image should be added -->
             </div>
         </div>
 
@@ -66,33 +66,33 @@
         <div class="w3-container">
             <!-- Question 1 -->
             <div id="question1">
-                <h3>Question 1: Does your mole have symmetry?</h3>
-                <label class="w3-text-yellow">
+                <h3>Question 1: Does your mole have symmetry?</h3> <!-- Header code for first question -->
+                <label class="w3-text-yellow"> <!-- Button code -->
                     <input class="w3-radio" type="radio" name="symmetry" value="yes">
                     <span>Yes</span>
-                </label>
-                <label class="w3-text-yellow">
+                </label> <!-- Code for yes button -->
+                <label class="w3-text-yellow"> <!-- Button code -->
                     <input class="w3-radio" type="radio" name="symmetry" value="no">
                     <span>No</span>
-                </label>
+                </label> <!-- Code for no button -->
                 <br><br>
                 <button class="w3-btn w3-hover-yellow" onclick="nextQuestion(1)">Next</button>
-            </div>
+            </div> <!-- Button to head to the next question-->
 
             <!-- Question 2 -->
             <div id="question2" style="display: none;">
-                <h3>Question 2: Are the borders to your mole smooth?</h3>
-                <label class="w3-text-yellow">
+                <h3>Question 2: Are the borders to your mole smooth?</h3> <!-- Header code for second question -->
+                <label class="w3-text-yellow"> <!-- Button code -->
                     <input class="w3-radio" type="radio" name="smooth_borders" value="yes">
                     <span>Yes</span>
-                </label>
-                <label class="w3-text-yellow">
+                </label> <!-- Code for yes button -->
+                <label class="w3-text-yellow"> <!-- Button code -->
                     <input class="w3-radio" type="radio" name="smooth_borders" value="no">
-                    <span>No</span>
+                    <span>No</span> <!-- Code for no button -->
                 </label>
                 <br><br>
                 <button class="w3-btn w3-hover-yellow" onclick="nextQuestion(2)">Next</button>
-            </div>
+            </div> <!-- Button to head to the next question-->
 
             <!-- Question 3 -->
             <div id="question3" style="display: none;">
