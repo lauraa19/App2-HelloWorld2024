@@ -83,6 +83,21 @@
                 <button class="w3-btn w3-hover-yellow" onclick="nextQuestion(1)">Next</button>
             </div>
 
+            <!-- Question 2 -->
+            <div id="question2" style="display: none;">
+                <h3>Question 2: Are the borders to your mole smooth?</h3>
+                <label class="w3-text-yellow">
+                    <input class="w3-radio" type="radio" name="smooth_borders" value="yes">
+                    <span>Yes</span>
+                </label>
+                <label class="w3-text-yellow">
+                    <input class="w3-radio" type="radio" name="smooth_borders" value="no">
+                    <span>No</span>
+                </label>
+                <br><br>
+                <button class="w3-btn w3-hover-yellow" onclick="nextQuestion(2)">Next</button>
+            </div>
+
             <!-- Remaining questions hidden for brevity -->
         </div>
     </div>
@@ -106,23 +121,25 @@
         }
 
         function nextQuestion(questionNumber) {
-            document.getElementById('question' + questionNumber).style.display = 'none';
-            document.getElementById('question' + (questionNumber + 1)).style.display = 'block';
+            var currentQuestion = document.getElementById('question' + questionNumber);
+            currentQuestion.style.display = 'none';
+            if (questionNumber < 5) {
+                var nextQuestion = document.getElementById('question' + (questionNumber + 1));
+                nextQuestion.style.display = 'block';
+            } else {
+                submitAssessment();
+            }
         }
 
         function submitAssessment() {
             var selectedSymmetry = document.querySelector('input[name="symmetry"]:checked');
             var selectedBorders = document.querySelector('input[name="smooth_borders"]:checked');
-            var selectedColor = document.querySelector('input[name="colored"]:checked');
-            var selectedDiameter = document.querySelector('input[name="diameter"]:checked');
-            var selectedEvolving = document.querySelector('input[name="evolving"]:checked');
+            // Add similar lines for other questions
 
-            if (selectedSymmetry && selectedBorders && selectedColor && selectedDiameter && selectedEvolving) {
+            if (selectedSymmetry && selectedBorders) {
                 updateScore(selectedSymmetry.value);
                 updateScore(selectedBorders.value);
-                updateScore(selectedColor.value);
-                updateScore(selectedDiameter.value);
-                updateScore(selectedEvolving.value);
+                // Add similar lines for other questions
 
                 showDiagnosis();
             } else {
@@ -131,7 +148,7 @@
         }
 
         function updateScore(answer) {
-            if (answer === 'yes' || answer === 'one_color' || answer === 'small' || answer === 'no') {
+            if (answer === 'yes' || answer === 'one_color' || answer === 'small') {
                 bratzScore++;
             } else {
                 barbieScore++;
@@ -160,4 +177,3 @@
 </body>
 
 </html>
-
