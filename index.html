@@ -33,12 +33,8 @@
         }
 
         .image-container img {
-            width: 80%; /* Adjust the width of the reference image */
-            max-width: 800px; /* Set maximum width for responsiveness */
-        }
-
-        #diagnosis {
-            font-size: 24px; /* Increase the font size of the diagnosis text */
+            width: 45%;
+            max-width: 400px;
         }
     </style>
 </head>
@@ -98,7 +94,50 @@
                 <button class="w3-btn w3-hover-yellow" onclick="nextQuestion(2)">Next</button>
             </div>
 
-            <!-- Remaining questions hidden for brevity -->
+            <!-- Question 3 -->
+            <div id="question3" style="display: none;">
+                <h3>Question 3: How is your mole colored?</h3>
+                <label class="w3-text-yellow">
+                    <input class="w3-radio" type="radio" name="colored" value="one_color">
+                    <span>One consistent color</span>
+                </label>
+                <label class="w3-text-yellow">
+                    <input class="w3-radio" type="radio" name="colored" value="variety_colors">
+                    <span>Has a variety of colors</span>
+                </label>
+                <br><br>
+                <button class="w3-btn w3-hover-yellow" onclick="nextQuestion(3)">Next</button>
+            </div>
+
+            <!-- Question 4 -->
+            <div id="question4" style="display: none;">
+                <h3>Question 4: Relatively speaking, what is the diameter of your mole?</h3>
+                <label class="w3-text-yellow">
+                    <input class="w3-radio" type="radio" name="diameter" value="small">
+                    <span>Small</span>
+                </label>
+                <label class="w3-text-yellow">
+                    <input class="w3-radio" type="radio" name="diameter" value="larger">
+                    <span>Larger</span>
+                </label>
+                <br><br>
+                <button class="w3-btn w3-hover-yellow" onclick="nextQuestion(4)">Next</button>
+            </div>
+
+            <!-- Question 5 -->
+            <div id="question5" style="display: none;">
+                <h3>Question 5: Does it look like your mole is evolving?</h3>
+                <label class="w3-text-yellow">
+                    <input class="w3-radio" type="radio" name="evolving" value="yes">
+                    <span>Yes</span>
+                </label>
+                <label class="w3-text-yellow">
+                    <input class="w3-radio" type="radio" name="evolving" value="no">
+                    <span>No</span>
+                </label>
+                <br><br>
+                <button class="w3-btn w3-hover-yellow" onclick="submitAssessment()">Submit</button>
+            </div>
         </div>
     </div>
 
@@ -121,25 +160,23 @@
         }
 
         function nextQuestion(questionNumber) {
-            var currentQuestion = document.getElementById('question' + questionNumber);
-            currentQuestion.style.display = 'none';
-            if (questionNumber < 5) {
-                var nextQuestion = document.getElementById('question' + (questionNumber + 1));
-                nextQuestion.style.display = 'block';
-            } else {
-                submitAssessment();
-            }
+            document.getElementById('question' + questionNumber).style.display = 'none';
+            document.getElementById('question' + (questionNumber + 1)).style.display = 'block';
         }
 
         function submitAssessment() {
             var selectedSymmetry = document.querySelector('input[name="symmetry"]:checked');
             var selectedBorders = document.querySelector('input[name="smooth_borders"]:checked');
-            // Add similar lines for other questions
+            var selectedColor = document.querySelector('input[name="colored"]:checked');
+            var selectedDiameter = document.querySelector('input[name="diameter"]:checked');
+            var selectedEvolving = document.querySelector('input[name="evolving"]:checked');
 
-            if (selectedSymmetry && selectedBorders) {
+            if (selectedSymmetry && selectedBorders && selectedColor && selectedDiameter && selectedEvolving) {
                 updateScore(selectedSymmetry.value);
                 updateScore(selectedBorders.value);
-                // Add similar lines for other questions
+                updateScore(selectedColor.value);
+                updateScore(selectedDiameter.value);
+                updateScore(selectedEvolving.value);
 
                 showDiagnosis();
             } else {
@@ -148,7 +185,7 @@
         }
 
         function updateScore(answer) {
-            if (answer === 'yes' || answer === 'one_color' || answer === 'small') {
+            if (answer === 'yes' || answer === 'one_color' || answer === 'small' || answer === 'no') {
                 bratzScore++;
             } else {
                 barbieScore++;
